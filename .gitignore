@@ -1,8 +1,27 @@
+## Included with Pattern Lab Drupal
 .DS_Store
-.idea
 export/*
 public/*
 vendor/*
 source/styleguide/*
 config/*.json
 
+## Included with Front End Starter Kit
+## https://github.com/segovia94/frontend-starter
+
+# Node modules
+node_modules
+
+# Bower Components
+bower_components
+
+# PHPStorm
+.idea
+
+# Source Maps
+*.map
+
+# Custom local gulp config
+gulp-config--custom.yml
+
+## Custom Ignores
