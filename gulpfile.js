@@ -23,6 +23,8 @@ var tasks = {
   default: []
 };
 
+require('./gulp_tasks/patternlab.js')(gulp, config, tasks);
+
 if (config.browserSync.enabled) {
   require('./gulp_tasks/browser-sync.js')(gulp, config, tasks);
 }
