@@ -1,58 +1,117 @@
-# Pattern Lab Twig Standard Edition for Drupal 
+# Pattern Lab Twig Standard Edition for Drupal Front End Starter
 
-The Standard Edition for Drupal gives developers and designers a clean and stable base from which to develop a Drupal compatible pattern library.
+The ['Standard Edition for Drupal'](https://github.com/pattern-lab/edition-php-drupal-standard) gives developers and designers a clean and stable base from which to develop a Drupal compatible Pattern Lab pattern library. The ['Front End Starter'](https://github.com/segovia94/frontend-starter) is meant as a one-time starterkit when creating a new web project. It offers default Sass folder structure which will be compiled with Gulp. This repository combines these two projects to create a front end stater kit for creating a pattern library and theme for Drupal sites using Gulp tasks to streamline workflow.
 
-## Prerequistes 
+### Prerequesites
 
-- [`composer`](https://getcomposer.org)
+If you are a Windows user then it is recommended you use [Git for Windows](http://git-for-windows.github.io/).
 
-## First Time Install
+You'll need [node.js](http://nodejs.org).
 
-1. Run `composer create-project pattern-lab/edition-drupal-standard FOLDERNAME` (Assuming you wanted it in a directory called `FOLDERNAME`).
-1. Select a starterkit from menu. If asked about replacing files, do it.
-1. Commit new files generated.
+After installing Node you should install Gulp and Bower globally (you may need to use `sudo` on a Mac if you get errors).
 
-## Using It
+```
+$ npm install --global gulp bower
+```
 
-After installing and committing, others cloning the repo need to run `composer install` to install dependencies.
+## Install and setup
 
-## Helpful Commands
+After cloning and changing into that directory, run this to install dependencies (you may need to use `sudo` on a Mac if you get errors):
 
-These are some helpful commands you can use on the command line for working with Pattern Lab.
+    $ npm install
+    $ bower install
 
-### One line start
+You may have to run that again for updates; so it may be wise to save this: `$ npm install && bower install`. **If you have any problems; this is the first thing to run.**
 
-This will compile PL and watch for changes while running the local server:
+Finally, to do an intial build of the site and start watching for changes run `gulp`
 
-    composer start
+```
+$ gulp
+```
 
-### Generate Pattern Lab
+### Bower
 
-To generate the front-end for Pattern Lab type:
+Bower is a package manager for the web. It is useful for adding third party libraries for both development and site inclusion.
 
-    php core/console --generate
+Install any [Bower](http://bower.io) component with the `--save` or `--save-dev` flag. You can search for [anything that Bower can install](http://bower.io/search/) and run:
 
-### Start a server to view Pattern Lab
+    $ bower install {thing} --save
 
-You can use PHP's built-in web server to review your Pattern Lab project in a browser. In a separate window type:
+Use `--save` when a package needs to be added as a dependency to the browser such as using [jQuery](https://jquery.com/). The js and css in these packages will automatically be compiled to the `scripts.js` and `vendor.css` files.
 
-    php core/console --server
+Use `--save-dev` when a package is specifically for development purposes like when using a Sass library such as [Breakpoint](http://breakpoint-sass.com/)
 
-Then open [http://localhost:8080](http://localhost:8080) in your browser.
+#### Bower Overrides
 
-### Install a StarterKit
+If a Bower package does not specify all the assets you need in its `"main"` property, then you can add or delete other assets it has packaged with an override. You can also remove any dependencies that it might want to include.
 
-To install a near-empty StarterKit as a starting point for your project type:
+Add overrides to the `bower.json` file.
 
-    php core/console --starterkit --init
+```json
+{
+  "overrides": {
+    "package-name": {
+      "main": ["file-you-want-included.js"],
+      "dependencies": {}
+    }
+  }
+}
+```
 
-To install a specific StarterKit from GitHub type:
+#### Bower Include Paths
 
-    php core/console --starterkit --install <starterkit-vendor/starterkit-name>
+If Bower is used to add dependencies and libraries for Sass then it is helpful to add it's `includePaths` to the `gulp-config.yml` file. This allows shorter import names to work in Sass files.
 
-### Updating Pattern Lab
+With an `includePaths` added to the `gulp-config.yml` file a simple `@import "breakpoint";` can be used instead of `@import "../bower_components/breakpoint-sass/stylesheets/breakpoint";"`.
 
-	composer update
+This also helps with any dependencies that Bower package might rely on.
+
+## Gulp
+
+Gulp is a task/build runner for development. It allows you to do a lot of stuff within your development workflow. You can compile sass files, uglify and compress js files and much more.
+
+- [Gulp Website](http://gulpjs.com/)
+- Article from CSS Tricks: [Gulp for Beginners](https://css-tricks.com/gulp-for-beginners/)
+
+### Local Gulp Configuration
+
+Gulp configuration can be customized to a local environment by creating a `gulp-config--custom.yml` file. Any custom config specific to a local setup can be placed in here and it will not be committed to Git.
+
+Default configuration is found in `gulp-config.yml`. You can copy out config you want to change into your custom file.
+
+### Gulp Tasks
+
+There are 4 main gulp tasks you should be aware of. Just add `gulp` before each task like `$ gulp help`.
+
+1. **Help** - Displays a list of all the available tasks with a brief discription of each
+2. **Default** - Generate the entire site and start watching for changes to live reload in the browser
+3. **Compile** - Generate the entire site with all assets such as css and js
+4. **Validate** - Validate CSS and JS by linting
+
+`$ gulp` is the one most often used and is the same as `$ gulp default`
+
+### Using Gulp with PHPStorm
+
+PHPStorm has [Gulp Tool Window](https://www.jetbrains.com/phpstorm/help/gulp-tool-window.html) for easy use of Gulp tasks.
+Right-click on the `gulpfile.js` file and choose `Show Gulp Tasks` to open the window.
+
+Double click `default` to start gulp and begin watching files for changes.
+
+You can double click `help` to see descriptions of available tasks
+
+### BrowserSync
+
+BrowserSync is being used by Gulp to allow live reloading so that changes will be injected automatically into the site without having to reload.
+
+When doing local development with a local server like [MAMP](https://www.mamp.info/en/) or [WAMP](http://www.wampserver.com/en/) you will want to add a `domain` option to a `gulp-config--custom.yml` file.
+
+```yaml
+browserSync:
+  domain: mydomain.local
+```
+
+- [BrowserSync Website](https://www.browsersync.io/)
+- [Example Video](https://youtu.be/907K7nqYesg)
 
 ## Other Documentation
 
