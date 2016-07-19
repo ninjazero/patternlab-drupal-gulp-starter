@@ -2,10 +2,10 @@
 css:
   enabled: true
   src:
-    - sass/**/*.scss
+    - source/sass/**/*.scss
   vendor:
-    - css/vendor/**/*.css
-  dest: css/
+    - source/css/vendor/**/*.css
+  dest: public/css/
   flattenDestOutput: true
   lint:
     enabled: false
@@ -27,10 +27,10 @@ css:
 js:
   enabled: true
   src:
-    - js/vendor/**/*.js
-    - js/**/*.js
-    - '!js/example.js'
-  dest: js/
+    - source/js/vendor/**/*.js
+    - source/js/**/*.js
+    - '!source/js/example.js'
+  dest: public/js/
   destName: scripts.js
   sourceMapEmbed: false
   uglify: true
@@ -57,10 +57,10 @@ browserSync:
   enabled: true
   port: 3050
   watchFiles:
-    - '**/*.html'
+#    - '**/*.html'
 #  domain: mydomain.local
   baseDir: ./
-  startPath: ''
+  startPath: 'public'
   openBrowserAtStart: true
   # requires above to be true; allows non-default browser to open
   browser:
@@ -70,3 +70,7 @@ browserSync:
   tunnel: false
   reloadDelay: 50
   reloadDebounce: 750
+
+images:
+  src: source/images/
+  dest: public/images/

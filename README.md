@@ -1,8 +1,10 @@
 # Pattern Lab Twig Standard Edition for Drupal Front End Starter
 
-The ['Standard Edition for Drupal'](https://github.com/pattern-lab/edition-php-drupal-standard) gives developers and designers a clean and stable base from which to develop a Drupal compatible Pattern Lab pattern library. The ['Front End Starter'](https://github.com/segovia94/frontend-starter) is meant as a one-time starterkit when creating a new web project. It offers default Sass folder structure which will be compiled with Gulp. This repository combines these two projects to create a front end stater kit for creating a pattern library and theme for Drupal sites using Gulp tasks to streamline workflow.
+The [Standard Edition for Drupal](https://github.com/pattern-lab/edition-php-drupal-standard) gives developers and designers a clean and stable base from which to develop a Drupal compatible Pattern Lab pattern library. The [Front End Starter](https://github.com/segovia94/frontend-starter) is meant as a one-time starterkit when creating a new web project. It offers default Sass folder structure which will be compiled with Gulp. This repository combines these two projects to create a front end stater kit for creating a pattern library and theme for Drupal sites using Gulp tasks to streamline workflow.
 
 ### Prerequesites
+
+- [`composer`](https://getcomposer.org)
 
 If you are a Windows user then it is recommended you use [Git for Windows](http://git-for-windows.github.io/).
 
